@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mana
+  m_text: Defense
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6dd5bbce28bcb3459fb3d17f3c198ba, type: 2}
   m_sharedMaterial: {fileID: 1359498833920007056, guid: e6dd5bbce28bcb3459fb3d17f3c198ba, type: 2}

@@ -112,23 +112,35 @@ public class AdventureManager : MonoBehaviour
         SoChoice selected = currentOptions[index];
         ui.HideOptions();
 
-        StartCoroutine(HandleDiceRoll(selected));
-        /*
-        // Decide se vai pro caminho de Cartas ou de Dados
-        float cardChance = playerStats.disbelief * 10f;
-        bool useCards = Random.Range(0f, 100f) < cardChance;
+        //StartCoroutine(HandleDiceRoll(selected));
+        switch (selected.choiceType)
+        {
+            case ChoiceType.Common:
+                // Comportamento normal (o que a gente já tem)
+                StartCoroutine(HandleDiceRoll(selected));
+                break;
 
-        if (useCards)
-        {
-            // Caminho das Cartas
-            StartCoroutine(HandleCardPath(selected));
+            case ChoiceType.Homestead:
+                // TODO: Lógica específica de Homestead
+                // Por enquanto pode chamar o mesmo do Common se quiser
+                
+                break;
+
+            case ChoiceType.Sin:
+                // TODO: Lógica específica de Sin
+                
+                break;
+
+            case ChoiceType.Church:
+                // TODO: Lógica específica de Church
+                
+                break;
+
+            default:
+                StartCoroutine(HandleDiceRoll(selected));
+                break;
         }
-        else
-        {
-            // Caminho normal dos Dados
-            StartCoroutine(HandleDiceRoll(selected));
-        }
-        */
+
     }
 
     IEnumerator HandleDiceRoll(SoChoice choice)
@@ -225,6 +237,7 @@ public class AdventureManager : MonoBehaviour
 
     void ApplyStatChange(StatType stat, float amount)
     {
+        Debug.Log($"Stat alterado: {stat} | Valor aplicado: {amount}");
         switch (stat)
         {
             case StatType.HP: playerStats.currentHP += amount; break;
