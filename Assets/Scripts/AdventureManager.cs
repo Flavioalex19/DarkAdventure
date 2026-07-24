@@ -18,6 +18,13 @@ public class AdventureManager : MonoBehaviour
     [Header("Cards")]
     public List<SoCard> availableCards;
 
+    [Header("Progression System")]
+    public int beginningLevel = 1;
+    public int currentLevel;
+    public int maxProgression = 5;          
+    public int currentProgression = 0;
+    public MapProgressionManager mapProgressionManager;
+
     void Start()
     {
         /*
@@ -26,6 +33,8 @@ public class AdventureManager : MonoBehaviour
             StartPhase(currentPhase);
         }
         */
+        currentLevel = beginningLevel;
+        currentProgression = 0;
         StartCoroutine(StartWithIntro());
     }
     IEnumerator StartWithIntro()
@@ -71,6 +80,11 @@ public class AdventureManager : MonoBehaviour
 
         // Desliga o objeto da intro
         ui.HidePhaseIntro();
+
+        if (mapProgressionManager != null)
+        {
+            mapProgressionManager.MoveToProgressionPoint(currentProgression);
+        }
 
         ui.HideOptions();
 
@@ -242,6 +256,17 @@ public class AdventureManager : MonoBehaviour
     {
         ui.ShowContinueButton(false);
 
+        // Aumenta a progressão
+        currentProgression++;
+
+        // Verifica se subiu de level
+        if (currentProgression >= maxProgression)
+        {
+            currentLevel++;
+            currentProgression = 0;
+            Debug.Log($"LEVEL UP! Agora está no Level {currentLevel}");
+        }
+        
         if (nextPhaseToLoad != null)
         {
             StartPhase(nextPhaseToLoad);
