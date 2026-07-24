@@ -31,6 +31,9 @@ public class SoChoice : ScriptableObject
     [Header("Efeito")]
     public StatType affectedStat;   
     public float amount;
+    [Header("Efeito Secundário (usado principalmente no Sin)")]
+    public StatType affectedStat2;
+    public float amount2;
 
     [Header("Tipo da Choice")]
     public ChoiceType choiceType = ChoiceType.Common;

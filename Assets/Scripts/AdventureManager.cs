@@ -121,19 +121,18 @@ public class AdventureManager : MonoBehaviour
                 break;
 
             case ChoiceType.Homestead:
-                // TODO: Lógica específica de Homestead
                 // Por enquanto pode chamar o mesmo do Common se quiser
-                
+                StartCoroutine(HandleHomestead(selected));
                 break;
 
             case ChoiceType.Sin:
                 // TODO: Lógica específica de Sin
-                
+                StartCoroutine(HandleSin(selected));
                 break;
 
             case ChoiceType.Church:
                 // TODO: Lógica específica de Church
-                
+                StartCoroutine(HandleHomestead(selected));
                 break;
 
             default:
@@ -206,7 +205,39 @@ public class AdventureManager : MonoBehaviour
 
         Debug.Log($"Dados: {dice1} + {dice2} = {totalRoll} ({rollPercentage:F0}%) | Atributo: {playerStatValue} | {(success ? "SUCESSO" : "FALHA")}");
     }
+    IEnumerator HandleHomestead(SoChoice choice)
+    {
+        // Aplica o amount diretamente (sem rolagem, sem inversão)
+        ApplyStatChange(choice.affectedStat, choice.amount);
 
+        // Sempre mostra a consequência positiva
+        ui.ShowConsequence(choice.positiveConsequence);
+
+        isShowingConsequence = true;
+
+        // Guarda a próxima fase
+        nextPhaseToLoad = choice.nextPhase;
+
+        // Mostra o botão Avançar
+        ui.ShowContinueButton(true);
+
+        yield return null;
+    }
+    IEnumerator HandleSin(SoChoice choice)
+    {
+        // Aplica os dois efeitos diretamente
+        ApplyStatChange(choice.affectedStat, choice.amount);
+        ApplyStatChange(choice.affectedStat2, choice.amount2);
+
+        // Mostra a consequência (por enquanto a positiva)
+        ui.ShowConsequence(choice.positiveConsequence);
+
+        isShowingConsequence = true;
+        nextPhaseToLoad = choice.nextPhase;
+        ui.ShowContinueButton(true);
+
+        yield return null;
+    }
     public void OnContinueClicked()
     {
         ui.ShowContinueButton(false);
