@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5f6ad401b27aa47be8a402be7094df, type: 3}
+  m_Name: Choice 0 0
+  m_EditorClassIdentifier: Assembly-CSharp::SoChoice
+  optionText: "Maybe I can carefully climb down this broken edge and search for a
+    safer path along the rocks below\u2026"
+  positiveConsequence: You find solid footholds and conserve your remaining strength.
+  negativeConsequence: A loose stone gives way. You fall hard and take further damage
+    to your body
+  affectedStat: 0
+  amount: 20
+  nextPhase: {fileID: 11400000, guid: 5d242878e23f85c4ca3f80d67f7708d6, type: 2}

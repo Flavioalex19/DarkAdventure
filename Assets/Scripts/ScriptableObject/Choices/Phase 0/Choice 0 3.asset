@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5f6ad401b27aa47be8a402be7094df, type: 3}
+  m_Name: Choice 0 3
+  m_EditorClassIdentifier: Assembly-CSharp::SoChoice
+  optionText: "Maybe I can break off one of the remaining beams and drive it into
+    the gap like a makeshift bridge support\u2026"
+  positiveConsequence: The beam holds firmly. A narrow path becomes possible
+  negativeConsequence: The beam snaps in your hands, hurting you.
+  affectedStat: 4
+  amount: 10
+  nextPhase: {fileID: 11400000, guid: 5d242878e23f85c4ca3f80d67f7708d6, type: 2}

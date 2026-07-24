@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d3da9bc17aa914584dc5e7b1d63d85, type: 3}
+  m_Name: Phase 0
+  m_EditorClassIdentifier: Assembly-CSharp::SoPhase
+  phaseName: Broken Bridge
+  description: 'Before you lies a broken bridge.The air is cold. The wind carries
+    the smell of rain and old blood. Your legs tremble. Your vision blurs for a moment.
+    You feel the weight of everything you have lost.
+
+    You are here. Alone. On
+    this side of the broken bridge.
+
+    What will you do?'
+  choicePool:
+  - {fileID: 11400000, guid: 2f804d9382ea4cc409f2f69904e72caf, type: 2}
+  - {fileID: 11400000, guid: 44bd995003df3ff45a5fce7ff683661d, type: 2}
+  - {fileID: 11400000, guid: 53323e90259f3c74080f91962361913b, type: 2}
+  - {fileID: 11400000, guid: a76307fbea3ec5c4aaab653e57d1a108, type: 2}
+  - {fileID: 11400000, guid: 34465bb625c95634f9f425761c665d60, type: 2}

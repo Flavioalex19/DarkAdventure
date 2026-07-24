@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d3da9bc17aa914584dc5e7b1d63d85, type: 3}
+  m_Name: Phase 1
+  m_EditorClassIdentifier: Assembly-CSharp::SoPhase
+  phaseName: The Mountain Path
+  description: 'Your body is heavy.You are tired. You are wounded. Every step sends
+    pain through your legs and chest.The path ahead is narrow and tortuous. The stones
+    are uneven and sharp. The mountainous terrain twists and rises without mercy,
+    forcing you to watch every footstep. There is no clear direction.The only sound
+    that follows you is the long, cold howl of the wind as it cuts through the mountains. '
+  choicePool:
+  - {fileID: 11400000, guid: 3724029c05c29d745a009905451d58a9, type: 2}
+  - {fileID: 11400000, guid: be55b72e4b2b1694da36ca59c09040b6, type: 2}
+  - {fileID: 11400000, guid: f7c5388341629d04ebf2895ea44b95c5, type: 2}
+  - {fileID: 11400000, guid: b124c05be7b1ce14bb80746f20f6b849, type: 2}
+  - {fileID: 11400000, guid: 34a3df259081aba44995419a1774b212, type: 2}
+  - {fileID: 11400000, guid: bd4e9f692b5f84945bb6bd8f8f0900f2, type: 2}
