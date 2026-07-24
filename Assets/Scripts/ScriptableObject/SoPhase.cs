@@ -11,4 +11,7 @@ public class SoPhase : ScriptableObject
 
     [Header("Pool de Escolhas")]
     public List<SoChoice> choicePool;
+
+    [Header("Audio")]
+    public AudioClip SFXAmbience;
 }

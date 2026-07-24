@@ -25,3 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b124c05be7b1ce14bb80746f20f6b849, type: 2}
   - {fileID: 11400000, guid: 34a3df259081aba44995419a1774b212, type: 2}
   - {fileID: 11400000, guid: bd4e9f692b5f84945bb6bd8f8f0900f2, type: 2}
+  SFXAmbience: {fileID: 8300000, guid: 3a9e52985b9e3c54c9979718b76095ac, type: 3}

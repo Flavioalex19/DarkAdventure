@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.VFX;
 
 public class AdventureManager : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class AdventureManager : MonoBehaviour
     public int maxProgression = 5;          
     public int currentProgression = 0;
     public MapProgressionManager mapProgressionManager;
+
+    [Header("SFX")]
+    public SFXManager sfxManager;
 
     void Start()
     {
@@ -75,6 +79,10 @@ public class AdventureManager : MonoBehaviour
     }
     IEnumerator StartPhaseAfterIntro(SoPhase phase)
     {
+        if (sfxManager != null && phase.SFXAmbience != null)
+        {
+            sfxManager.PlayAmbience(phase.SFXAmbience);
+        }
         // Tempo da animação de intro da fase
         yield return new WaitForSeconds(4f);
 
