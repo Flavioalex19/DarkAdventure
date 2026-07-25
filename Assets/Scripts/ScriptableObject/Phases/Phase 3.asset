@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d3da9bc17aa914584dc5e7b1d63d85, type: 3}
+  m_Name: Phase 3
+  m_EditorClassIdentifier: Assembly-CSharp::SoPhase
+  phaseName: The Dome
+  description: 'The adventurer comes upon a great dome.
+
+    Inside it lies what
+    appears to be a labyrinth, inhabited by something he cannot understand. There
+    is little to process. He only feels something approaching.
+
+    What will he
+    do?'
+  choicePool: []
+  SFXAmbience: {fileID: 8300000, guid: a53819cc521b1f24689b00c663d8fbb4, type: 3}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d3da9bc17aa914584dc5e7b1d63d85, type: 3}
+  m_Name: Phase 2
+  m_EditorClassIdentifier: Assembly-CSharp::SoPhase
+  phaseName: The City
+  description: 'The knight comes across a strange city, built of tall stone structures.
+    Its roads, its pathways, are also made of a material that feels... strange, yet
+    at the same time familiar.
+
+    You are in a place never seen before, but somehow,
+    you feel comfortable here.
+
+    What could this be to you?'
+  choicePool:
+  - {fileID: 11400000, guid: 620a4744c55d88749be205130d9e1a1e, type: 2}
+  - {fileID: 11400000, guid: 25c2a416f44e0a7469d18adf0abb7f86, type: 2}
+  - {fileID: 11400000, guid: d9c618a2e755b94408089e4c517c7e20, type: 2}
+  SFXAmbience: {fileID: 8300000, guid: 660790bb19a97eb4581a05d90c81f369, type: 3}

@@ -19,4 +19,7 @@ MonoBehaviour:
     it harder to start again
   affectedStat: 0
   amount: 15
-  nextPhase: {fileID: 0}
+  affectedStat2: 0
+  amount2: 0
+  choiceType: 0
+  nextPhase: {fileID: 11400000, guid: 07d696acbb5b21f4ba5c81023cc0707e, type: 2}

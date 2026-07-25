@@ -262,19 +262,26 @@ public class AdventureManager : MonoBehaviour
     }
     public void OnContinueClicked()
     {
+        
         ui.ShowContinueButton(false);
 
         // Aumenta a progressão
         currentProgression++;
 
-        // Verifica se subiu de level
+        // Se chegou no final do level
         if (currentProgression >= maxProgression)
         {
             currentLevel++;
-            currentProgression = 0;
+            //currentProgression = 0;
+
             Debug.Log($"LEVEL UP! Agora está no Level {currentLevel}");
+
+            // Só mostra o summary, NÃO avança pra próxima phase
+            ui.PlayLevelSummary();
+            return;   //  impede de continuar para StartPhase
         }
-        
+
+        // Só chega aqui se ainda NÃO for o final do level
         if (nextPhaseToLoad != null)
         {
             StartPhase(nextPhaseToLoad);
@@ -331,6 +338,27 @@ public class AdventureManager : MonoBehaviour
 
             default:
                 return true;
+        }
+    }
+    public void OnSummaryClosed()
+    {
+        // Agora sim reseta a progressão
+        currentProgression = 0;
+
+        // Teleporta o miniPlayer pro primeiro ponto
+        if (mapProgressionManager != null)
+        {
+            mapProgressionManager.MoveToProgressionPoint(0);
+        }
+
+        // Só agora inicia a próxima phase
+        if (nextPhaseToLoad != null)
+        {
+            StartPhase(nextPhaseToLoad);
+        }
+        else
+        {
+            ui.ShowDescription("Fim da aventura.");
         }
     }
     IEnumerator HandleCardPath(SoChoice choice)

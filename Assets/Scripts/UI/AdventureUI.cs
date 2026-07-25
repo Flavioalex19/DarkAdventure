@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using UnityEngine.VFX;
 
 public class AdventureUI : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class AdventureUI : MonoBehaviour
     public TextMeshProUGUI textPhaseTitle;       
     public GameObject go_phaseintro;
 
+    [Header("Level Summary")]
+    public GameObject summaryLevelObject;
+    public Animator summaryLevelAnimator;
+    public Button summaryButton;
+    public SFXManager sfxManager;
+
     void Start()
     {
         // Configura os botões de escolha
@@ -43,7 +50,10 @@ public class AdventureUI : MonoBehaviour
             int index = i;
             optionButtons[i].onClick.AddListener(() => manager.SelectChoice(index));
         }
-
+        if (summaryButton != null)
+        {
+            summaryButton.onClick.AddListener(OnSummaryButtonClicked);
+        }
         // Configura o botão Avançar
         continueButton.onClick.AddListener(manager.OnContinueClicked);
 
@@ -246,5 +256,48 @@ public class AdventureUI : MonoBehaviour
 
         if (go_phaseintro != null)
             go_phaseintro.SetActive(false);
+    }
+
+    public void PlayLevelSummary()
+    {
+        if (summaryLevelObject != null)
+        {
+            summaryLevelObject.SetActive(true);
+        }
+
+        if (summaryLevelAnimator != null)
+        {
+            summaryLevelAnimator.SetTrigger("Go");
+        }
+        if (sfxManager != null)
+        {
+            sfxManager.PlaySoundtrack();
+        }
+    }
+    public void OnSummaryButtonClicked()
+    {
+        if (summaryLevelAnimator != null)
+        {
+            summaryLevelAnimator.SetTrigger("Out");
+        }
+
+        StartCoroutine(HideSummaryAndContinue(1f)); // tempo da animação de saída
+    }
+
+    IEnumerator HideSummaryAndContinue(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (summaryLevelObject != null)
+            summaryLevelObject.SetActive(false);
+        
+        if (sfxManager != null)
+        {
+            sfxManager.StopSoundtrack();
+        }
+
+        // Avisa o Manager que o Summary fechou
+        if (manager != null)
+            manager.OnSummaryClosed();
     }
 }
