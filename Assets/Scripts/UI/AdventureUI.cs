@@ -276,14 +276,40 @@ public class AdventureUI : MonoBehaviour
     }
     public void OnSummaryButtonClicked()
     {
+        // 1. Animação de saída do Summary
         if (summaryLevelAnimator != null)
         {
             summaryLevelAnimator.SetTrigger("Out");
         }
 
-        StartCoroutine(HideSummaryAndContinue(1f)); // tempo da animação de saída
-    }
+        // 2. Troca o áudio imediatamente (rápido)
+        if (sfxManager != null)
+        {
+            sfxManager.StopSoundtrack();
+        }
 
+        // 3. Já começa a próxima phase (intro)
+        if (manager != null)
+        {
+            manager.OnSummaryClosed();
+        }
+
+        // 4. Desliga o objeto do Summary depois (só visual)
+        StartCoroutine(HideSummaryObjectAfterDelay(1f));
+    }
+    IEnumerator HideSummaryObjectAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (summaryLevelObject != null)
+            summaryLevelObject.SetActive(false);
+
+        // Volta o áudio (pode ficar aqui ou também ir pro Manager)
+        if (sfxManager != null)
+        {
+            sfxManager.StopSoundtrack();
+        }
+    }
     IEnumerator HideSummaryAndContinue(float delay)
     {
         yield return new WaitForSeconds(delay);

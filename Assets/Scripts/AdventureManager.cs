@@ -350,7 +350,11 @@ public class AdventureManager : MonoBehaviour
         {
             mapProgressionManager.MoveToProgressionPoint(0);
         }
-
+        // Já troca a ambientação da próxima phase imediatamente
+        if (nextPhaseToLoad != null && sfxManager != null && nextPhaseToLoad.SFXAmbience != null)
+        {
+            sfxManager.PlayAmbience(nextPhaseToLoad.SFXAmbience);
+        }
         // Só agora inicia a próxima phase
         if (nextPhaseToLoad != null)
         {

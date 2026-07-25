@@ -7,6 +7,7 @@ public class SFXManager : MonoBehaviour
     public AudioSource soundtrackAudioSource;
     [Header("Fade Settings")]
     public float fadeDuration = 1.2f;
+    public float summaryFadeDuration = 0.6f;
     public void PlayAmbience(AudioClip newClip)
     {
         if (ambienceAudioSource == null || newClip == null) return;
@@ -79,11 +80,11 @@ public class SFXManager : MonoBehaviour
         // Fade out da soundtrack
         if (soundtrackAudioSource != null && soundtrackAudioSource.isPlaying)
         {
-            yield return StartCoroutine(FadeVolume(soundtrackAudioSource, soundtrackAudioSource.volume, 0f));
+            yield return StartCoroutine(FadeVolume(soundtrackAudioSource, soundtrackAudioSource.volume, 0f, summaryFadeDuration));
             soundtrackAudioSource.Stop();
         }
 
-        // Fade in da ambientação de volta
+        // Fade in da ambientação
         if (ambienceAudioSource != null)
         {
             if (!ambienceAudioSource.isPlaying && ambienceAudioSource.clip != null)
@@ -91,7 +92,23 @@ public class SFXManager : MonoBehaviour
                 ambienceAudioSource.Play();
             }
 
-            yield return StartCoroutine(FadeVolume(ambienceAudioSource, ambienceAudioSource.volume, 1f));
+            yield return StartCoroutine(FadeVolume(ambienceAudioSource, ambienceAudioSource.volume, 1f, summaryFadeDuration));
         }
+    }
+    IEnumerator FadeVolume(AudioSource source, float fromVolume, float toVolume, float duration = -1f)
+    {
+        if (duration < 0f) duration = fadeDuration;
+
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / duration;
+            source.volume = Mathf.Lerp(fromVolume, toVolume, t);
+            yield return null;
+        }
+
+        source.volume = toVolume;
     }
 }
