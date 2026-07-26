@@ -352,7 +352,7 @@ public class AdventureManager : MonoBehaviour
         // Transição correta de áudio
         if (sfxManager != null && nextPhaseToLoad != null)
         {
-            sfxManager.TransitionToNewAmbience(nextPhaseToLoad.SFXAmbience);
+            //sfxManager.TransitionToNewAmbience(nextPhaseToLoad.SFXAmbience);
         }
 
         if (nextPhaseToLoad != null)

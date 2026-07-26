@@ -83,7 +83,7 @@ public class SFXManager : MonoBehaviour
             yield return StartCoroutine(FadeVolume(soundtrackAudioSource, soundtrackAudioSource.volume, 0f, summaryFadeDuration));
             soundtrackAudioSource.Stop();
         }
-
+        /*
         // Fade in da ambientação
         if (ambienceAudioSource != null)
         {
@@ -94,6 +94,7 @@ public class SFXManager : MonoBehaviour
 
             yield return StartCoroutine(FadeVolume(ambienceAudioSource, ambienceAudioSource.volume, 1f, summaryFadeDuration));
         }
+        */
     }
     IEnumerator FadeVolume(AudioSource source, float fromVolume, float toVolume, float duration = -1f)
     {
