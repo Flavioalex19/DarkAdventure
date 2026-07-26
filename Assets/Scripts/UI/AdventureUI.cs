@@ -68,23 +68,9 @@ public class AdventureUI : MonoBehaviour
         mainText.text = text;
     }
 
-    public void ShowOptions(List<string> optionTexts)
+    public void ShowOptions(/*List<string> optionTexts*/List<SoChoice> choices)
     {
         /*
-        for (int i = 0; i < optionButtons.Length; i++)
-        {
-            if (i < optionTexts.Count)
-            {
-                TextMeshProUGUI buttonText = optionButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-                buttonText.text = optionTexts[i];
-                optionButtons[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                optionButtons[i].gameObject.SetActive(false);
-            }
-        }
-        */
         for (int i = 0; i < optionButtons.Length; i++)
         {
             if (i < optionTexts.Count)
@@ -94,6 +80,27 @@ public class AdventureUI : MonoBehaviour
                     buttonText.text = optionTexts[i];
 
                 optionButtons[i].gameObject.SetActive(true); // liga o botão
+            }
+            else
+            {
+                optionButtons[i].gameObject.SetActive(false);
+            }
+        }
+        */
+        for (int i = 0; i < optionButtons.Length; i++)
+        {
+            if (i < choices.Count)
+            {
+                SoChoice choice = choices[i];
+
+                TextMeshProUGUI buttonText = optionButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                if (buttonText != null)
+                {
+                    buttonText.text = choice.optionText;
+                    buttonText.color = GetColorByStat(choice.affectedStat);
+                }
+
+                optionButtons[i].gameObject.SetActive(true);
             }
             else
             {
@@ -325,5 +332,19 @@ public class AdventureUI : MonoBehaviour
         // Avisa o Manager que o Summary fechou
         if (manager != null)
             manager.OnSummaryClosed();
+    }
+    //Colors
+    Color GetColorByStat(StatType stat)
+    {
+        switch (stat)
+        {
+            case StatType.HP: return Color.green;
+            case StatType.Will: return Color.yellow;
+            case StatType.Fear: return new Color(0.6f, 0.2f, 0.8f); 
+            case StatType.Attack: return new Color(1f, 0.5f, 0f);    
+            case StatType.Defense: return Color.cyan;
+            case StatType.Stress: return Color.red;                 
+            default: return Color.white;
+        }
     }
 }

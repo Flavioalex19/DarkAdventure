@@ -111,4 +111,34 @@ public class SFXManager : MonoBehaviour
 
         source.volume = toVolume;
     }
+    public void TransitionToNewAmbience(AudioClip newAmbienceClip)
+    {
+        StartCoroutine(TransitionToNewAmbienceRoutine(newAmbienceClip));
+    }
+
+    IEnumerator TransitionToNewAmbienceRoutine(AudioClip newClip)
+    {
+        // 1. Só faz fade out da soundtrack
+        if (soundtrackAudioSource != null && soundtrackAudioSource.isPlaying)
+        {
+            yield return StartCoroutine(FadeVolume(soundtrackAudioSource, soundtrackAudioSource.volume, 0f, summaryFadeDuration));
+            soundtrackAudioSource.Stop();
+        }
+
+        // 2. Troca o clipe da ambientação (se quiser trocar o áudio)
+        // mas NÃO mexe no volume dela
+        if (ambienceAudioSource != null && newClip != null)
+        {
+            bool wasPlaying = ambienceAudioSource.isPlaying;
+            float currentVolume = ambienceAudioSource.volume;
+
+            ambienceAudioSource.clip = newClip;
+
+            if (wasPlaying)
+            {
+                ambienceAudioSource.Play();
+                ambienceAudioSource.volume = currentVolume; // mantém o volume que já estava
+            }
+        }
+    }
 }

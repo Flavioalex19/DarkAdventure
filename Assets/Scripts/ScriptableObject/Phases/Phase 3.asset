@@ -16,10 +16,8 @@ MonoBehaviour:
   description: 'The adventurer comes upon a great dome.
 
     Inside it lies what
-    appears to be a labyrinth, inhabited by something he cannot understand. There
-    is little to process. He only feels something approaching.
-
-    What will he
-    do?'
+    appears to be a labyrinth, inhabited by something he cannot understand.He took
+    a look back and saw darkness in a figure in the shape of him. It was not an illusion
+    or his sigh seen in double. '
   choicePool: []
   SFXAmbience: {fileID: 8300000, guid: a53819cc521b1f24689b00c663d8fbb4, type: 3}

@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af5f6ad401b27aa47be8a402be7094df, type: 3}
-  m_Name: Choice 3 0
+  m_Name: Choice 3 1
   m_EditorClassIdentifier: Assembly-CSharp::SoChoice
-  optionText: I have to get away from this; this can't haunt me...
-  positiveConsequence: 
-  negativeConsequence: 
+  optionText: I have to defend myself. I'm not in a state to fight this...
+  positiveConsequence: The shadow passes right by you.
+  negativeConsequence: The shadow passes by you, leaving an intense pain in your
+    chest as if your heart had been pierced by a thrust.
   affectedStat: 0
-  amount: 0
+  amount: 40
   affectedStat2: 0
   amount2: 0
   choiceType: 0

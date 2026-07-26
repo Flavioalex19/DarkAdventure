@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5f6ad401b27aa47be8a402be7094df, type: 3}
+  m_Name: Choice 3 4
+  m_EditorClassIdentifier: Assembly-CSharp::SoChoice
+  optionText: Can I face this? Do I have a chance and the capability?
+  positiveConsequence: The knight takes his stance, faces the creature, and hurls
+    the nearest torch at it, creating an opening to get past.
+  negativeConsequence: The shadow beast casts its shadow over the knight, engulfing
+    him in darkness; immediately after, he is seized by visions of his past that
+    drive him to madness and knock him unconscious.
+  affectedStat: 2
+  amount: 40
+  affectedStat2: 0
+  amount2: 0
+  choiceType: 0
+  nextPhase: {fileID: 0}

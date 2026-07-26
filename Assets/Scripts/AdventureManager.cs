@@ -123,7 +123,7 @@ public class AdventureManager : MonoBehaviour
             optionTexts.Add(choice.optionText);
         }
 
-        ui.ShowOptions(optionTexts);
+        ui.ShowOptions(/*optionTexts*/currentOptions);
     }
 
     public void SelectChoice(int index)
@@ -342,20 +342,19 @@ public class AdventureManager : MonoBehaviour
     }
     public void OnSummaryClosed()
     {
-        // Agora sim reseta a progressão
         currentProgression = 0;
 
-        // Teleporta o miniPlayer pro primeiro ponto
         if (mapProgressionManager != null)
         {
             mapProgressionManager.MoveToProgressionPoint(0);
         }
-        // Já troca a ambientação da próxima phase imediatamente
-        if (nextPhaseToLoad != null && sfxManager != null && nextPhaseToLoad.SFXAmbience != null)
+
+        // Transição correta de áudio
+        if (sfxManager != null && nextPhaseToLoad != null)
         {
-            sfxManager.PlayAmbience(nextPhaseToLoad.SFXAmbience);
+            sfxManager.TransitionToNewAmbience(nextPhaseToLoad.SFXAmbience);
         }
-        // Só agora inicia a próxima phase
+
         if (nextPhaseToLoad != null)
         {
             StartPhase(nextPhaseToLoad);
