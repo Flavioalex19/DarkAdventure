@@ -15,10 +15,10 @@ public class PlayerStats : MonoBehaviour
     public float startFear;
     public float currentFear;
 
-    [Header("Mana")]
-    public float startMana;
-    public float currentMana;
-    public float maxMana;
+    [Header("Stress")]
+    public float startStress;
+    public float currentStress;
+    public float maxStress;
 
     [Header("Attack")]
     public float baseAttack;
@@ -39,7 +39,7 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         currentHP = maxHP;
-        currentMana = maxMana;
+        currentStress = maxStress;
         currentWill = startWill; 
         currentFear = startFear;
         currentAttack = baseAttack; 

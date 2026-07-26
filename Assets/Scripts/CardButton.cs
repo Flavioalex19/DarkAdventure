@@ -67,7 +67,7 @@ public class CardButton : MonoBehaviour
             case StatType.HP: playerStats.currentHP += amount; break;
             case StatType.Will: playerStats.currentWill += amount; break;
             case StatType.Fear: playerStats.currentFear += amount; break;
-            case StatType.Stress: playerStats.currentMana += amount; break;
+            case StatType.Stress: playerStats.currentStress += amount; break;
             case StatType.Attack: playerStats.currentAttack += amount; break;
             case StatType.Defense: playerStats.currentDefense += amount; break;
         }

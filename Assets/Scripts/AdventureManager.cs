@@ -299,7 +299,7 @@ public class AdventureManager : MonoBehaviour
             case StatType.HP: return playerStats.currentHP;
             case StatType.Will: return playerStats.currentWill;
             case StatType.Fear: return playerStats.currentFear;
-            case StatType.Stress: return playerStats.currentMana;
+            case StatType.Stress: return playerStats.currentStress;
             case StatType.Attack: return playerStats.currentAttack;
             case StatType.Defense: return playerStats.currentDefense;
             default: return 0f;
@@ -314,7 +314,7 @@ public class AdventureManager : MonoBehaviour
             case StatType.HP: playerStats.currentHP += amount; break;
             case StatType.Will: playerStats.currentWill += amount; break;
             case StatType.Fear: playerStats.currentFear += amount; break;
-            case StatType.Stress: playerStats.currentMana += amount; break;
+            case StatType.Stress: playerStats.currentStress += amount; break;
             case StatType.Attack: playerStats.currentAttack += amount; break;
             case StatType.Defense: playerStats.currentDefense += amount; break;
         }
