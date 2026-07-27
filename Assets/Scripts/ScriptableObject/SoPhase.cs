@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum PhaseType
+{
+    Default,
+    Combat
+}
 [CreateAssetMenu(fileName = "New Phase", menuName = "Text Adventure/Phase")]
 public class SoPhase : ScriptableObject
 {
@@ -14,4 +18,7 @@ public class SoPhase : ScriptableObject
 
     [Header("Audio")]
     public AudioClip SFXAmbience;
+
+    [Header("Tipo da Fase")]
+    public PhaseType phaseType = PhaseType.Default;
 }

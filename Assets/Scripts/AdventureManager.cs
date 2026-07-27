@@ -26,6 +26,9 @@ public class AdventureManager : MonoBehaviour
     public int currentProgression = 0;
     public MapProgressionManager mapProgressionManager;
 
+    [Header("Combat")]
+    public CombatManager combatManager;
+
     [Header("SFX")]
     public SFXManager sfxManager;
 
@@ -66,16 +69,23 @@ public class AdventureManager : MonoBehaviour
 
         ui.PlayPhaseIntro(phase.phaseName);//play intro
 
-        /*
-        ui.ShowDescription(phase.description);
-        ui.ShowContinueButton(false);
-        ui.HideDiceArea();
+        switch (phase.phaseType)
+        {
+            case PhaseType.Default:
+                StartCoroutine(StartPhaseAfterIntro(phase));
+                break;
 
-        GenerateRandomOptions();
-        */
+            case PhaseType.Combat:
+                StartCoroutine(StartCombatPhase(phase));
+                break;
+
+            default:
+                StartCoroutine(StartPhaseAfterIntro(phase));
+                break;
+        }
 
         // Espera a intro + depois faz o typewriter
-        StartCoroutine(StartPhaseAfterIntro(phase));
+        //StartCoroutine(StartPhaseAfterIntro(phase));
     }
     IEnumerator StartPhaseAfterIntro(SoPhase phase)
     {
@@ -296,7 +306,7 @@ public class AdventureManager : MonoBehaviour
     {
         switch (stat)
         {
-            case StatType.HP: return playerStats.currentHP;
+            case StatType.HP: return playerStats.currentVitality;
             case StatType.Will: return playerStats.currentWill;
             case StatType.Fear: return playerStats.currentFear;
             case StatType.Stress: return playerStats.currentStress;
@@ -311,7 +321,7 @@ public class AdventureManager : MonoBehaviour
         Debug.Log($"Stat alterado: {stat} | Valor aplicado: {amount}");
         switch (stat)
         {
-            case StatType.HP: playerStats.currentHP += amount; break;
+            case StatType.HP: playerStats.currentVitality += amount; break;
             case StatType.Will: playerStats.currentWill += amount; break;
             case StatType.Fear: playerStats.currentFear += amount; break;
             case StatType.Stress: playerStats.currentStress += amount; break;
@@ -364,6 +374,19 @@ public class AdventureManager : MonoBehaviour
             ui.ShowDescription("Fim da aventura.");
         }
     }
+
+    IEnumerator StartCombatPhase(SoPhase phase)
+    {
+        Debug.Log("Iniciando fase de COMBATE: " + phase.phaseName);
+
+        if (combatManager != null)
+        {
+            combatManager.StartCombat();
+        }
+
+        yield return null;
+    }
+
     IEnumerator HandleCardPath(SoChoice choice)
     {
         // Guarda a próxima fase

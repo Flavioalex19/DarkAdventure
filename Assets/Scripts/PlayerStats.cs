@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Header("Health")]
-    public float startHP;
-    public float currentHP;
-    public float maxHP;
+    [Header("Vitality")]
+    public float startVitality;
+    public float currentVitality;
+    public float maxVitality;
 
     [Header("Will")]
     public float startWill;
@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        currentHP = maxHP;
+        currentVitality = maxVitality;
         currentStress = maxStress;
         currentWill = startWill; 
         currentFear = startFear;

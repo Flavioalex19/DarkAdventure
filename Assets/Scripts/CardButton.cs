@@ -64,7 +64,7 @@ public class CardButton : MonoBehaviour
     {
         switch (stat)
         {
-            case StatType.HP: playerStats.currentHP += amount; break;
+            case StatType.HP: playerStats.currentVitality += amount; break;
             case StatType.Will: playerStats.currentWill += amount; break;
             case StatType.Fear: playerStats.currentFear += amount; break;
             case StatType.Stress: playerStats.currentStress += amount; break;
