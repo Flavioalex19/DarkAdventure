@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Creature", menuName = "Text Adventure/Creature")]
@@ -10,4 +11,6 @@ public class SoCreature : ScriptableObject
     public float attack;
     public float defense;
     public float creatureWill;
+    [Header("Attacks")]
+    public List<SoAttack> attacks;
 }

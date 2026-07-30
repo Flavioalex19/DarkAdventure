@@ -28,6 +28,7 @@ public class AdventureManager : MonoBehaviour
 
     [Header("Combat")]
     public CombatManager combatManager;
+    public CombatUI combatUI;
 
     [Header("SFX")]
     public SFXManager sfxManager;
@@ -378,10 +379,11 @@ public class AdventureManager : MonoBehaviour
     IEnumerator StartCombatPhase(SoPhase phase)
     {
         Debug.Log("Iniciando fase de COMBATE: " + phase.phaseName);
+        
 
         if (combatManager != null)
         {
-            combatManager.StartCombat();
+            combatManager.StartCombat(phase.enemyCreature);
         }
 
         yield return null;

@@ -25,4 +25,4 @@ MonoBehaviour:
   affectedStat2: 0
   amount2: 0
   choiceType: 0
-  nextPhase: {fileID: 0}
+  nextPhase: {fileID: 11400000, guid: 4f3117e31467cb4438c5a5a1b9976953, type: 2}

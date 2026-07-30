@@ -9,8 +9,13 @@ public class BtnAttack : MonoBehaviour
     [Header("Data")]
     public SoAttack soAtk;
 
+    [Header("Combat Chances")]
+    public float accuracy = 100f;           
+    public float criticalChance = 0f;
+
     [Header("References")]
     public Enemy enemy;
+    public CombatManager combatManager;
 
     [Header("Runtime")]
     public int damage;
@@ -39,12 +44,61 @@ public class BtnAttack : MonoBehaviour
         attackEffect = soAtk.attackEffect;
     }
     /// <summary>
-    /// Função de cálculo de dano (vazia por enquanto)
+    /// Função de cálculo de dano
     /// </summary>
-    float CalculateDamage()
+    public float CalculateDamage()
     {
-        // Aqui depois entra a lógica completa de cálculo
-        return 0f;
+        if (p_stats == null || soAtk == null) return 0f;
+
+        // 1. Chance de acertar (Accuracy)
+        float hitRoll = Random.Range(0f, 100f);
+        if (hitRoll > accuracy)
+        {
+            Debug.Log("Errou o ataque!");
+            return 0f; // Errou
+        }
+
+        // 2. Dano base inicial
+        float damage = soAtk.baseDamage + p_stats.currentAttack;
+
+        // 3. Modificadores por tipo de ataque
+        switch (attackType)
+        {
+            case AttackType.Normal:
+                // 100% de potência, sem alteração
+                break;
+
+            case AttackType.Stress:
+                // Stress reduz a porcentagem de ataque
+                // Quanto mais Stress o player tiver, mais reduz
+                float stressPenalty = p_stats.currentStress / 100f; // 0 a 1
+                damage *= (1f - stressPenalty);
+                break;
+
+            case AttackType.Fear:
+                // Fear reduz a potência do ataque
+                float fearPenalty = p_stats.currentFear / 100f;
+                damage *= (1f - fearPenalty * 0.7f); // Fear reduz até 70% da potência
+                break;
+
+            case AttackType.Willpower:
+                // Willpower aumenta a chance de crítico
+                criticalChance = p_stats.currentWill; // quanto maior o Will, maior a chance
+                break;
+        }
+
+        // 4. Chance de crítico (principalmente no Willpower, mas pode valer pra todos)
+        float critRoll = Random.Range(0f, 100f);
+        if (critRoll <= criticalChance)
+        {
+            damage *= 1.5f; // Crítico = 150% do dano
+            Debug.Log("CRITICAL HIT!");
+        }
+
+        // Evita dano negativo
+        if (damage < 0) damage = 0;
+
+        return damage;
     }
 
     /// <summary>
@@ -66,5 +120,12 @@ public class BtnAttack : MonoBehaviour
             enemy.currentHP = 0;
 
         Debug.Log($"Dano causado: {finalDamage} | HP restante do inimigo: {enemy.currentHP}");
+    }
+    public void OnClickAttack()
+    {
+        if (combatManager != null)
+        {
+            combatManager.OnPlayerAttack(this);
+        }
     }
 }

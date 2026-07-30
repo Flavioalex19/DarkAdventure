@@ -21,4 +21,7 @@ public class SoPhase : ScriptableObject
 
     [Header("Tipo da Fase")]
     public PhaseType phaseType = PhaseType.Default;
+    
+    [Header("Combat")]
+    public SoCreature enemyCreature;
 }
